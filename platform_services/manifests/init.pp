@@ -20,7 +20,7 @@ class platform_services (
   },
   $networks_netmask = 24,
 ) {
-  $node_role = regsubst($::hostname, '^(\w+)-.*$', '\1')
+  $node_role = regsubst($::hostname, '^([\-\w]*)-\d+$', '\1')
   $node_nr = regsubst($::hostname, '^.*-(\d+)$', '\1') ? {
     /^\d+$/ => "$0",
     default => '1',
