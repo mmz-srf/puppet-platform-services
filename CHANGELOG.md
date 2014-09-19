@@ -1,4 +1,24 @@
-## 1.1.7
+## 1.1.10 (July 18, 2014)
+
+Bugfixes:
+
+  * Fix default cert and ldap settings in authconfig
+
+## 1.1.9 (May 23, 2014)
+
+Bugfixes:
+
+  * Fix zone replication, remove hardcoded serial (Daniel Beyer, YMC AG)
+
+
+## 1.1.8 (April 14, 2014)
+
+Bugfixes:
+
+  * vmtoolsd: ensure service running and enabled
+
+
+## 1.1.7 (January 30, 2014)
 
   * update CHANGELOG
 
