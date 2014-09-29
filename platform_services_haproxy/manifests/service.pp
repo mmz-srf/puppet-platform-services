@@ -2,17 +2,28 @@ define platform_services_haproxy::service(
   $ipaddress,
   $ports,
   $options = {},
-  $virtual_router_id = undef
+  $virtual_router_id = undef,
+  $preferred_instance  = undef
 ) {
 
   if $::platform_services_haproxy::server::high_available {
     $network_netmask = $::platform_services::networks_netmask
     if ($virtual_router_id and !defined(Keepalived::Instance[$virtual_router_id]) ){
+
+      $base_priority = 150 - $::platform_services::node_nr * 50
+
+      if ( $::platform_services::node_nr == $preferred_instance ) {
+        $priority = $base_priority + 1000
+      } else {
+      # base_priority undef
+        $priority = $base_priority
+      }
+
       keepalived::instance{$virtual_router_id:
         interface    => 'eth0',
         virtual_ips  => [ "$ipaddress/$network_netmask" ],
         state        => 'BACKUP',
-        priority     => 150 - $::platform_services::node_nr * 50,
+        priority     => $priority,
         track_script => [ "haproxy" ],
         auth_type    => "PASS",
         auth_pass    => "635178udDK1AQ123",
