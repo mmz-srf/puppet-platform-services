@@ -10,13 +10,17 @@ define platform_services_haproxy::service(
     $network_netmask = $::platform_services::networks_netmask
     if ($virtual_router_id and !defined(Keepalived::Instance[$virtual_router_id]) ){
 
-      $base_priority = 150 - $::platform_services::node_nr * 50
+      $base_priority = 251 - $::platform_services::node_nr * 50
 
       if ( $::platform_services::node_nr == $preferred_instance ) {
-        $priority = $base_priority + 1000
+        $priority = 254
       } else {
-      # base_priority undef
+      # base_priority und undef
         $priority = $base_priority
+      }
+
+      if( $priority > 254 or $priority < 1 ){
+        fail('VRPP priority must be in range 1 - 254')
       }
 
       keepalived::instance{$virtual_router_id:
