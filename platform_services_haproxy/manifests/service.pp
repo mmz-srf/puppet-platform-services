@@ -19,16 +19,14 @@ define platform_services_haproxy::service(
         $priority = $base_priority
       }
 
-      if( $priority > 254 or $priority < 1 ){
-        fail('VRPP priority must be in range 1 - 254')
-      }
+      $weight = $priority-1
 
       keepalived::instance{$virtual_router_id:
         interface    => 'eth0',
         virtual_ips  => [ "$ipaddress/$network_netmask" ],
         state        => 'BACKUP',
         priority     => $priority,
-        track_script => [ "haproxy" ],
+        track_script => [ "haproxy weight -$weight" ],
         auth_type    => "PASS",
         auth_pass    => "635178udDK1AQ123",
       }
