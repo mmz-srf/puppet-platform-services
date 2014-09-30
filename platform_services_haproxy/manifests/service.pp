@@ -18,15 +18,13 @@ define platform_services_haproxy::service(
       # base_priority und undef
         $priority = $base_priority
       }
-
-      $weight = $priority-1
-
+      
       keepalived::instance{$virtual_router_id:
         interface    => 'eth0',
         virtual_ips  => [ "$ipaddress/$network_netmask" ],
         state        => 'BACKUP',
         priority     => $priority,
-        track_script => [ "haproxy weight -$weight" ],
+        track_script => [ "haproxy" ],
         auth_type    => "PASS",
         auth_pass    => "635178udDK1AQ123",
       }
