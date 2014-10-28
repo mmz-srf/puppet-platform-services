@@ -2,7 +2,7 @@ define platform_services_cloudstack::port_forwarding(
   $front_ip,
   $protocol = 'tcp',
   $port = $name,
-  vm_guest_ip = unset,
+  $vm_guest_ip = undef,
 ) {
   debug("${caller_module_name}->${module_name} : Configuring Portforwarding with front_id:${front_ip}, protocol:${protocol}, port:${port}")
 
