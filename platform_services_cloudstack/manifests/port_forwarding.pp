@@ -1,8 +1,11 @@
 define platform_services_cloudstack::port_forwarding(
   $front_ip,
   $protocol = 'tcp',
-  $port = $name
+  $port = $name,
+  vm_guest_ip = unset,
 ) {
+  debug("${caller_module_name}->${module_name} : Configuring Portforwarding with front_id:${front_ip}, protocol:${protocol}, port:${port}")
+
   if $::platform_services::manage_front_ips {
     @@cloudstack_port_forwarding{"$::fqdn/$protocol/$name":
       ensure             => present,
@@ -11,6 +14,7 @@ define platform_services_cloudstack::port_forwarding(
       privateport        => $port,
       publicport         => $port,
       virtual_machine_id => $::instance_id,
+      vm_guest_ip        => $vm_guest_ip,
     }
   }
 }
