@@ -14,7 +14,6 @@ define platform_services_cloudstack::port_forwarding(
       privateport        => $port,
       publicport         => $port,
       virtual_machine_id => $::instance_id,
-      vm_guest_ip        => $vm_guest_ip,
     }
   }
 }
