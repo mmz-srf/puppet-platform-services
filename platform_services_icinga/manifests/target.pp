@@ -55,7 +55,7 @@ class platform_services_icinga::target (
       service_description => 'Swap',
       check_command => 'check_swap',
       ensure   => $swap_check,
-      nrpe_args => '10\!5';
+      nrpe_args => '50%\!10%';
   }
   case $osfamily {
      'RedHat': {
