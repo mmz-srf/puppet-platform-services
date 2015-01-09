@@ -11,5 +11,6 @@ class platform_services_cloudstack::controller {
       project    => inline_template("<%= scope.lookupvar('::mpc_bu').upcase %>_<%= scope.lookupvar('::mpc_project').upcase %>"),
     }
     Cloudstack_port_forwarding <<||>>
+    Cloudstack_secondary_ip <<||>>
   }
 }
