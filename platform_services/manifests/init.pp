@@ -3,6 +3,7 @@ class platform_services (
   $front_ip_mappings = {
     'puppet' => {
       '01' => '13',
+      '1'  => '13',
     },
     'dns' => {
       '01' => '14',
