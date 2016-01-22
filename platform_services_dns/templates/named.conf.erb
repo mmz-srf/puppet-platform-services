@@ -8,9 +8,14 @@ options {
 
         recursion yes;
         
-        # ns3.swisstxt.ch and # ns4.swisstxt.ch
+        # ns3.swisstxt.ch 193.218.104.190
+        # ns4.swisstxt.ch 193.218.103.253
+        # ns1.stxt.media.int 10.100.219.164
+        # ns2.stxt.media.int 10.100.19.15
+        # ns5.stxt.media.int 10.100.219.165
+        # ns6.stxt.media.int 10.100.19.10
         forwarders { "193.218.104.190"; "193.218.103.253"; };
-        allow-transfer { "193.218.104.190"; "193.218.103.253"; };
+        allow-transfer { "193.218.104.190"; "193.218.103.253"; "10.100.219.164"; "10.100.19.15"; "10.100.219.165"; "10.100.19.10"; };
         also-notify { "193.218.104.190"; "193.218.103.253"; };
 
         dnssec-enable yes;
