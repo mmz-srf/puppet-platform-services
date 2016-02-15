@@ -1,9 +1,15 @@
-class platform_services_dns::server {
+class platform_services_dns::server(
+  $port_forwarding_vm_guest_ip = undef,
+) {
   require platform_services_dns
 
   # fail if interfaces are not available
   unless (is_mac_address($::platform_services_dns::macaddress_serv) and is_mac_address($::platform_services_dns::macaddress_sync) and is_mac_address($platform_services_dns::macaddress_stor)) {
     fail("dns server must have all interfaces available")
+  }
+
+  if is_ip_address($port_forwarding_vm_guest_ip) {
+    $vm_guest_ip = $port_forwarding_vm_guest_ip
   }
 
   # don't do anything if interfaces have no ips (also don't fail)
@@ -20,10 +26,12 @@ class platform_services_dns::server {
       front_ip => $::platform_services::front_ip::ip,
       port => 53,
       protocol => 'udp',
+      vm_guest_ip => $port_forwarding_vm_guest_ip,
     }
     
     class{'::platform_services_resolvconf::nameserver':
-      front_ip => $::platform_services::front_ip::ip,
+      front_ip    => $::platform_services::front_ip::ip,
+      internal_ip => $port_forwarding_vm_guest_ip,
     }
 
     platform_services_dns::server::zone{
