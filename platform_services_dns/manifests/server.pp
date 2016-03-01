@@ -22,7 +22,7 @@ class platform_services_dns::server(
     class{'::platform_services::front_ip':
       ports => 53,
     } ->
-    platform_services_cloudstack::port_forwarding{'53/udp':
+    platform_services_cloudstack::port_forwarding{'53':
       front_ip => $::platform_services::front_ip::ip,
       port => 53,
       protocol => 'udp',
