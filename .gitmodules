@@ -7,9 +7,6 @@
 [submodule "sysctl"]
 	path = sysctl
 	url = https://github.com/swisstxt/puppet-module-sysctl.git
-[submodule "firewall"]
-	path = firewall
-	url = https://github.com/puppetlabs/puppetlabs-firewall.git
 [submodule "icinga"]
 	path = icinga
 	url = https://github.com/swisstxt/puppet-module-icinga.git
@@ -69,7 +66,7 @@
 	url = https://github.com/camptocamp/puppet-augeas.git
 [submodule "authconfig"]
 	path = authconfig
-	url = https://github.com/swisstxt/puppet-module-authconfig 
+	url = https://github.com/swisstxt/puppet-module-authconfig
 [submodule "postfix"]
 	path = postfix
 	url = https://github.com/camptocamp/puppet-postfix.git
