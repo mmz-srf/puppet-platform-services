@@ -9,7 +9,7 @@ class platform_services::front_ip(
       fail("must provide front-ip-mapping for ${::platform_services::node_role} node number ${::platform_services::node_nr}")
     }
     $front_ip_last_octet = $::platform_services::front_ip_last_octets[$::platform_services::node_nr]
-    $ip = inline_template("<%= @mpc_network_front.sub(/0$/, '') + front_ip_last_octet %>")
+    $ip = inline_template("<%= @mpc_network_front.sub(/0$/, '') + @front_ip_last_octet %>")
   }
 
   platform_services_cloudstack::port_forwarding{$ports:
