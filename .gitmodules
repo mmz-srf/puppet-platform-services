@@ -28,9 +28,6 @@
 [submodule "mysql"]
 	path = mysql
 	url = https://github.com/puppetlabs/puppetlabs-mysql.git
-[submodule "user"]
-	path = user
-	url = https://github.com/swisstxt/puppet-module-user.git
 [submodule "php"]
 	path = php
     url = https://github.com/swisstxt/puppet-module-php.git
