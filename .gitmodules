@@ -34,9 +34,6 @@
 [submodule "mysql"]
 	path = mysql
 	url = https://github.com/puppetlabs/puppetlabs-mysql.git
-[submodule "user"]
-	path = user
-	url = https://github.com/swisstxt/puppet-module-user.git
 [submodule "php"]
 	path = php
     url = https://github.com/swisstxt/puppet-module-php.git
@@ -106,3 +103,6 @@
 [submodule "pnp4nagios"]
 	path = pnp4nagios
 	url = https://github.com/swisstxt/puppet-module-pnp4nagios.git
+[submodule "user"]
+	path = user
+	url = git@github.com:mmz-srf/puppet-module-user.git
