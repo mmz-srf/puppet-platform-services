@@ -28,7 +28,7 @@ define platform_services_haproxy::service(
         priority     => $priority,
         track_script => [ "haproxy weight -${track_weight}" ],
         auth_type    => "PASS",
-        auth_pass    => "635178udDK1AQ123",
+        auth_pass    => "Akogafuma836pfI2y",
       }
     }
     
