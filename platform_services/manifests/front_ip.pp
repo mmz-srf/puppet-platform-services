@@ -1,5 +1,5 @@
 class platform_services::front_ip(
-  $ports = [80],
+  $ports = ['80'],
   $front_ip = undef,
 ) {
   if $front_ip {
