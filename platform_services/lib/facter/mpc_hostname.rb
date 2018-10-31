@@ -1,5 +1,5 @@
 Facter.add("mpc_hostname") do
-  hostname = String.new(Facter.value('hostname'))
+  hostname = String.new(Facter.value('networking')['hostname'])
   mpc_hostname = hostname
   setcode do
     if mpc_hostname
