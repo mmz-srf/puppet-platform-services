@@ -37,7 +37,7 @@ class platform_services_puppet::master(
     data => $fqdn,
   }
   class{'::platform_services::front_ip':
-    ports => 8140,
+    ports => '8140',
   }
   if $site_classes {
     class{$site_classes:}

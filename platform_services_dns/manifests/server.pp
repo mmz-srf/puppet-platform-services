@@ -20,15 +20,15 @@ class platform_services_dns::server(
     include ::dns
 
     class{'::platform_services::front_ip':
-      ports => 53,
+      ports => '53',
     } ->
     platform_services_cloudstack::port_forwarding{'53/udp':
       front_ip => $::platform_services::front_ip::ip,
-      port => 53,
+      port => '53',
       protocol => 'udp',
       vm_guest_ip => $port_forwarding_vm_guest_ip,
     }
-    
+
     class{'::platform_services_resolvconf::nameserver':
       front_ip    => $::platform_services::front_ip::ip,
       internal_ip => $port_forwarding_vm_guest_ip,
