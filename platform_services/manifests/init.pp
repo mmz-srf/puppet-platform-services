@@ -34,7 +34,7 @@ class platform_services (
   }
 
   ::platform_services::validate_var{[
-#    'lsbmajdistrelease', not available in puppet4 facts
+    'lsbmajdistrelease',
     'mpc_zone',
     'mpc_project',
     'mpc_bu',
