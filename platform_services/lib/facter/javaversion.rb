@@ -12,8 +12,6 @@
 #   number. It will return the full javaversion if the major version could not
 #   be parsed out.
 #
-# Caveats:
-#
 
 Facter.add(:javaversion) do
   setcode do
