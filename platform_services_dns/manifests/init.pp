@@ -14,7 +14,7 @@ class platform_services_dns(
     fail("class parameter 'interfaces' must be a hash with keys 'serv', 'sync' and 'stor'")
   }
 
-  if $::mpc_network_front == $::network_eth0 {
+  if $::mpc_network_front == $::network_primary_ip {
     $macaddress_front = $::macaddress_eth0
     $ipaddress_front = $::ipaddress_eth0
   } else {

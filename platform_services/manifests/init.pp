@@ -18,6 +18,9 @@ class platform_services (
     'patch' => {
       '01' => '18',
     },
+    'puppetserver' => {
+      '1' => '10',
+    },
   },
   $networks_netmask = 24,
 ) {

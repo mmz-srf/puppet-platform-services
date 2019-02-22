@@ -4,7 +4,7 @@ class platform_services_network {
   }
 
   # leave physical machines, they may use bonding!
-  unless $::virtual == 'physical' or $::network_eth0 == $mpc_network_front {
+  unless $::virtual == 'physical' or $::network_primary_ip == $mpc_network_front {
     if is_mac_address($::macaddress_eth0) {
       class{'::platform_services_network::serv':
         stage => pre,

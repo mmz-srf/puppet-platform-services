@@ -1,10 +1,11 @@
 ip_segment_map = {
   'srf' => {
     'test'       => '20',
-    'acceptance' => '24',
+    #'acceptance' => '24',
     'stage'      => '28',
-    'training'   => '32',
+    #'training'   => '32',
     'production' => '36',
+    'development'=> '16',
   },
   'rts' => {
     'dev'  => '6',
@@ -27,7 +28,7 @@ Facter.add("mpc_network_front") do
     mpc_bu = Facter.value('mpc_bu')
     mpc_project = Facter.value('mpc_project')
     mpc_zone = Facter.value('mpc_zone')
-    
+
     begin
       network_id = ip_segment_map[mpc_bu][mpc_project]
     rescue NoMethodError

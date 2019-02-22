@@ -8,7 +8,7 @@ class platform_services_resolvconf(
     value => $timeout,
   }
 
-  if $::mpc_network_front == $::network_eth0 {
+  if $::mpc_network_front == $::network_primary_ip {
     resolvconf::domain{"${::mpc_zone}.${::mpc_project}.${::mpc_bu}.mpc":}
     Resolvconf::Nameserver <<|tag=='front'|>>
   } else {
