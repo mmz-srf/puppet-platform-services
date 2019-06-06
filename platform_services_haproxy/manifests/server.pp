@@ -7,9 +7,10 @@ class platform_services_haproxy::server(
     sysctl::value{'net.ipv4.ip_nonlocal_bind': value => '1'}
     include keepalived
 
-    $libipset_package = 'libipset3'
     if $::lsbdistcodename == 'buster' {
       $libipset_package = 'libipset11'
+    } else {
+      $libipset_package = 'libipset3'
     }
     ensure_resource('package', $libipset_package, {ensure => installed})
 
