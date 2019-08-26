@@ -1,6 +1,6 @@
 class platform_services_resolvconf::nameserver(
   $front_ip = false,
-  $internal_ip = $::ipaddress,
+  $internal_ip = $facts['networking']['interfaces']['eth0']['ip'],
   $default_nameserver = [ "193.218.104.190", "193.218.103.253" ]
 ){
   case $::mpc_bu {
