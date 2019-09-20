@@ -1,4 +1,4 @@
-# inspired by ttps://gist.github.com/elasticdog/5452797
+# inspired by https://gist.github.com/elasticdog/5452797
 #
 # Fact: javaversion & javamajversion
 #
@@ -25,6 +25,13 @@ Facter.add(:javamajversion) do
   setcode do
     javaversion = Facter.value(:javaversion)
     mdata = regexp.match(javaversion)
-    mdata ? mdata[1] : javaversion
+    firstversion = mdata[0].split('.')[0]
+
+    if firstverstion.to_i >= 10
+      majversion = firstversion
+    else
+      majversion = mdata[1]
+    end
+    mdata = majversion
   end
 end
