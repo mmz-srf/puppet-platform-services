@@ -27,7 +27,7 @@ Facter.add(:javamajversion) do
     mdata = regexp.match(javaversion)
     firstversion = mdata[0].split('.')[0]
 
-    if firstverstion.to_i >= 10
+    if firstversion.to_i >= 10
       majversion = firstversion
     else
       majversion = mdata[1]
