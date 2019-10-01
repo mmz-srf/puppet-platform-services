@@ -14,24 +14,36 @@
 #
 
 Facter.add(:javaversion) do
-  setcode do
-    javaversion = %x[/usr/bin/java -version 2>&1 | awk '/version/ { print $3 }'].split('"')[1]
+  if File.exists?('/usr/bin/java')
+    setcode do
+      javaversion = %x[/usr/bin/java -version 2>&1 | awk '/version/ { print $3 }'].split('"')[1]
+    end
+  else
+    setcode do
+      javaversion = "java not installed"
+    end
   end
 end
 
 Facter.add(:javamajversion) do
-  regexp = /\d+\.(\d+)\./
+  javaversion = Facter.value(:javaversion)
 
-  setcode do
-    javaversion = Facter.value(:javaversion)
-    mdata = regexp.match(javaversion)
-    firstversion = mdata[0].split('.')[0]
-
-    if firstversion.to_i >= 10
-      majversion = firstversion
-    else
-      majversion = mdata[1]
+  if javaversion == "java not installed"
+    setcode do
+      mdata = "java not installed"
     end
-    mdata = majversion
+  else
+    regexp = /\d+\.(\d+)\./
+    setcode do
+      mdata = regexp.match(javaversion)
+      firstversion = mdata[0].split('.')[0]
+
+      if firstversion.to_i >= 10
+        majversion = firstversion
+      else
+        majversion = mdata[1]
+      end
+      mdata = majversion
+    end
   end
 end
