@@ -18,6 +18,9 @@ class platform_services_dns(
     $macaddress_front = $::macaddress_eth0
     $ipaddress_front = $::ipaddress_eth0
   } else {
+    $macaddress_front = undef 
+    $ipaddress_front = undef #required in memmper.pp:4 
+
     $macaddress_serv = getvar("::macaddress_${interfaces['serv']}")
     $macaddress_sync = getvar("::macaddress_${interfaces['sync']}")
     $macaddress_stor = getvar("::macaddress_${interfaces['stor']}")
