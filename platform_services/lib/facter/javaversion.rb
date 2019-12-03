@@ -51,7 +51,7 @@ end
 Facter.add(:javahome) do
   if File.exists?('/usr/bin/java')
     setcode do
-      javahome = %x[readlink -f /usr/bin/java | sed 's#/bin/java##g']
+      javahome = %x[readlink -f /usr/bin/java | sed 's#/bin/java##g'].strip
     end
   else
     setcode do
