@@ -47,3 +47,15 @@ Facter.add(:javamajversion) do
     end
   end
 end
+
+Facter.add(:javahome) do
+  if File.exists?('/usr/bin/java')
+    setcode do
+      javahome = %x[readlink -f /usr/bin/java | sed 's#/bin/java##g']
+    end
+  else
+    setcode do
+      javahome = "java not installed"
+    end
+  end
+end
