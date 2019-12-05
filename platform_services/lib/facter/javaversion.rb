@@ -51,11 +51,24 @@ end
 Facter.add(:javahome) do
   if File.exists?('/usr/bin/java')
     setcode do
-      javahome = %x[readlink -f /usr/bin/java | sed 's#/bin/java##g'].strip
+      Facter::Core::Execution.execute("readlink -f /usr/bin/java | sed 's#/bin/java##g'")
     end
   else
     setcode do
-      javahome = "java not installed"
+      "java not installed"
+    end
+  end
+end
+
+Facter.add(:javasharedlibs) do
+  javahome = Facter.value(:javahome)
+  if javahome == "java not installed"
+    setcode do
+      "java not installed"
+    end
+  else
+    setcode do
+      Facter::Core::Execution.execute("dirname $(find #{javahome} -name libjvm.so) | sed 's#/server##g'")
     end
   end
 end
