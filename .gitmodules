@@ -88,10 +88,6 @@
 [submodule "filemapper"]
 	path = filemapper
 	url = https://github.com/adrienthebo/puppet-filemapper.git
-[submodule "network"]
-	path = network
-	url = https://github.com/mmz-srf/puppet-network.git
-        branch = master
 [submodule "selinux"]
 	path = selinux
 	url = https://github.com/spiette/puppet-selinux.git
