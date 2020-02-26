@@ -97,3 +97,6 @@
 [submodule "user"]
 	path = user
 	url = git@github.com:mmz-srf/puppet-module-user.git
+[submodule "network"]
+	path = network
+	url = https://github.com/voxpupuli/puppet-network
