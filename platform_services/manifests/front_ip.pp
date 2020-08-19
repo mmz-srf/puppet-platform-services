@@ -1,6 +1,7 @@
 class platform_services::front_ip(
-  $ports = ['80'],
+  $ports    = ['80'],
   $front_ip = undef,
+  $cidrlist = '0.0.0.0/0', 
 ) {
   if $front_ip {
     $ip = $front_ip
@@ -14,6 +15,7 @@ class platform_services::front_ip(
 
   platform_services_cloudstack::port_forwarding{$ports:
     front_ip => $ip,
+    cidrlist => $cidrlist,
   }
   platform_services_dns::member::zone_front{$::hostname:
     front_ip => $ip,
