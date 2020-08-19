@@ -10,6 +10,7 @@ class platform_services_cloudstack::controller {
       secret_key => $cloudstack_secret_key,
       project    => inline_template("<%= scope.lookupvar('::mpc_bu').upcase %>_<%= scope.lookupvar('::mpc_project').upcase %>"),
     }
+    Cloudstack_firewall_rule <<||>>
     Cloudstack_port_forwarding <<||>>
     Cloudstack_secondary_ip <<||>>
   }
