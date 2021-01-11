@@ -15,7 +15,7 @@ class platform_services_haproxy::server(
     ensure_resource('package', $libipset_package, {ensure => installed})
 
     keepalived::vrrp_script{'haproxy':
-      script => '/usr/bin/nice -n -20 pgrep haproxy$',
+      script => '/usr/bin/timeout 1 /usr/bin/nice -n -20 pgrep haproxy$',
       weight => 51,
     }
   }
