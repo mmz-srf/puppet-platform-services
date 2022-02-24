@@ -46,9 +46,6 @@
 [submodule "cloudstack"]
 	path = cloudstack
 	url = https://github.com/swisstxt/puppet-module-cloudstack.git
-[submodule "haproxy"]
-	path = haproxy
-	url = https://github.com/puppetlabs/puppetlabs-haproxy.git
 [submodule "elasticsearch"]
 	path = elasticsearch
 	url = https://github.com/electrical/puppet-elasticsearch.git
